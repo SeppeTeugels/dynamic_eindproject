@@ -1,0 +1,9 @@
+werkt onmiddellijk (zonder dat de docent eerst aanpassingen moet doen)
+je project is gedeployed
+*je project is correct gestructureerd in files en directories
+*Minstens 3 verschillende eigen Components (al dan niet in aparte files)
+*minstens 1 keer een list/array/collection van Components correct renderen
+*minstens 1 keer props.children gebruiken
+minstens 1 keer een Component anders (of niet) laten renderen afhankelijk van een conditie
+*minstens 1 keer een Fragment gebruiken
+*Minstens 1 react-bootstrap Components gebruiken
