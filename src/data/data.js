@@ -10,3 +10,7 @@ export const STANDS_DATA =[
     {id:9, name: "Alternate", logo:"/images/alternate.png", age:18},
 
 ];
+
+export const USERS_DATA =[
+    {id:1, name:"Seppe", lastname:"Teugels", age:19},
+];
