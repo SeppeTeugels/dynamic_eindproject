@@ -16,8 +16,8 @@ function App() {
         <Router>
             <Routes>
                 <Route path="dynamic_eindproject/" element={<HomePage/>}/>
-                <Route path="signup" element={<SignUpPage/>}/>
-                <Route path="login" element={<LoginPage/>}/>
+                <Route path="/signup" element={<SignUpPage/>}/>
+                <Route path="/login" element={<LoginPage/>}/>
                 <Route path="dynamic_eindproject/buypage" element={<BuyPage/>}/>
                 <Route path="dynamic_eindproject/buildingpage" element={<BuildingPage/>}/>
                 <Route path="dynamic_eindproject/standlistpage" element={<StandListPage stands={STANDS_DATA} />}/>
