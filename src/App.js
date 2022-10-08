@@ -15,15 +15,15 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="" element={<HomePage/>}/>
-                <Route path="signup" element={<SignUpPage/>}/>
-                <Route path="login" element={<LoginPage/>}/>
-                <Route path="buypage" element={<BuyPage/>}/>
-                <Route path="buildingpage" element={<BuildingPage/>}/>
-                <Route path="standlistpage" element={<StandListPage stands={STANDS_DATA} />}/>
-                <Route path="standlist/18" element={<StandListPage stands={STANDS_DATA.filter(s => s.age )}/>}/>
-                <Route path="standlist" element={<StandListPage stands={STANDS_DATA.filter(s => !s.age )}/>}/>
-                <Route path="stands/:Id" element={<StandPage/>}/>
+                <Route path="/dynamic_eindproject/" element={<HomePage/>}/>
+                <Route path="/dynamic_eindproject/signup" element={<SignUpPage/>}/>
+                <Route path="/dynamic_eindproject/login" element={<LoginPage/>}/>
+                <Route path="/dynamic_eindproject/buypage" element={<BuyPage/>}/>
+                <Route path="/dynamic_eindproject/buildingpage" element={<BuildingPage/>}/>
+                <Route path="/dynamic_eindproject/standlistpage" element={<StandListPage stands={STANDS_DATA} />}/>
+                <Route path="/dynamic_eindproject/standlist/18" element={<StandListPage stands={STANDS_DATA.filter(s => s.age )}/>}/>
+                <Route path="/dynamic_eindproject/standlist" element={<StandListPage stands={STANDS_DATA.filter(s => !s.age )}/>}/>
+                <Route path="/dynamic_eindproject/stands/:Id" element={<StandPage/>}/>
             </Routes>
         </Router>
     );

@@ -7,9 +7,9 @@ function HomePage (){
         <Container style={{margin:0, height:"100%"}} >
 
                 <h1>Welcome to the convention</h1>
-            <Button href="signup">sign up</Button>
-            <Button href="login">log in </Button>
-            { (allowedIn())? <Button href="buildingpage">go to convention</Button> :<Button href="buypage">buy ticket</Button>  }
+            <Button href="/dynamic_eindproject/signup">sign up</Button>
+            <Button href="/dynamic_eindproject/login">log in </Button>
+            { (allowedIn())? <Button href="/dynamic_eindproject/buildingpage">go to convention</Button> :<Button href="/dynamic_eindproject/buypage">buy ticket</Button>  }
 
         </Container>
     );
