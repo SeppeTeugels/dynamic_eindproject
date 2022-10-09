@@ -1,4 +1,4 @@
 export function allowedIn() {
-    const allowed = false;
+    const allowed = true;
     return allowed;
 }

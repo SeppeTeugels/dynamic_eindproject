@@ -5,9 +5,7 @@ import {Link} from "react-router-dom";
 function BuildingPage (){
     return (
         <div>
-            <Button href="/standlistpage">
-                Listing of all the stands
-            </Button>
+            <Link to="/standlistpage"><Button>Listing of all the stands</Button></Link>
             <Link to="/"><Button> go to homepage </Button></Link>
         </div>
     )
