@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {StandListSection} from "../components/stands/StandListSection";
 import {USERS_DATA} from "../data/data";
+import {Button} from "react-bootstrap";
 
 function StandListPage(props) {
     const {stands} = props
@@ -23,7 +24,7 @@ export function ShowStand(props) {
                 : stands.filter(s => !s.age).map((s, i) => <Stand key={i} stand={s}/>)}
             </div>
             <div>
-                <a href="/">homepage</a>
+                <Link to="/"><Button> go to homepage </Button></Link>
             </div>
         </>
     )

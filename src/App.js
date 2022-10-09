@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {HashRouter as Router, Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
@@ -16,12 +16,12 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
-                <Route path="/signup" element={<SignUpPage/>}/>
-                <Route path="/login" element={<LoginPage/>}/>
-                <Route path="/buypage" element={<BuyPage/>}/>
-                <Route path="/buildingpage" element={<BuildingPage/>}/>
-                <Route path="/standlistpage" element={<StandListPage stands={STANDS_DATA}/>}/>
-                <Route path="/stands/:Id" element={<StandPage/>}/>
+                <Route path="signup" element={<SignUpPage/>}/>
+                <Route path="login" element={<LoginPage/>}/>
+                <Route path="buypage" element={<BuyPage/>}/>
+                <Route path="buildingpage" element={<BuildingPage/>}/>
+                <Route path="standlistpage" element={<StandListPage stands={STANDS_DATA}/>}/>
+                <Route path="stands/:Id" element={<StandPage/>}/>
             </Routes>
         </Router>
     );

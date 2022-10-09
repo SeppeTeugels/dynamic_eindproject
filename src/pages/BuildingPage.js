@@ -1,20 +1,14 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 function BuildingPage (){
     return (
         <div>
-
-            <Button href="/standlist/18">
-                stands for 18+
-            </Button>
-            <Button href="/standlist">
-                stands for all ages
-            </Button>
             <Button href="/standlistpage">
                 Listing of all the stands
             </Button>
-            <a href="/">homepage</a>
+            <Link to="/"><Button> go to homepage </Button></Link>
         </div>
     )
 }

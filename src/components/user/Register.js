@@ -1,11 +1,12 @@
 import {Button, Container} from "react-bootstrap";
 import React from "react";
+import {Link} from "react-router-dom";
 
 function Register (){
     return (
         <Container style={{margin:0, height:"100%"}} >
             <h1>Make an account</h1>
-            <Button href="/login">aleady got on log in</Button>
+            <Link to={"/login"}><Button> aleady got on log in </Button></Link>
         </Container>
     );
 }
