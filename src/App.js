@@ -1,4 +1,3 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {HashRouter as Router, Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -10,6 +9,7 @@ import StandPage from "./pages/StandPage";
 import StandListPage from "./pages/StandlistPage";
 import {STANDS_DATA} from "./data/data";
 import React from "react";
+import "./services/firebase";
 
 function App() {
     return (
