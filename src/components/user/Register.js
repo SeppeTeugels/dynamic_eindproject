@@ -14,7 +14,7 @@ function Register() {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
 
-    async function handleSubmit(e) {
+     function handleSubmit(e) {
         e.preventDefault()
 
         if (passwordRef.current.value !== confirmPasswordRef.current.value) {
@@ -23,7 +23,7 @@ function Register() {
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            signup(emailRef.current.value, passwordRef.current.value)
         } catch(error) {
             console.log(error)
             setError('Failed to create an account')
