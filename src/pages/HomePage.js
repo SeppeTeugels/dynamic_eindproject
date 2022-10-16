@@ -2,7 +2,6 @@ import React from 'react';
 import {Button, Container} from "react-bootstrap";
 import {allowedIn} from "../components/user/UserInfo";
 import {Link} from "react-router-dom";
-
 function HomePage (){
     return (
         <Container style={{margin:0, height:"100%"}} >
