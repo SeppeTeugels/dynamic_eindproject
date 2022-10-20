@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth"
+import {getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth"
 import app from "../services/firebase";
 
 
@@ -11,14 +11,18 @@ export function useAuth() {
     return useContext(AuthContext)
 }
 
+
 export function AuthProvider({children}){
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState();
+    const [email, setEmail] = useState();
 
     function signup(email, password) {
         return createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setCurrentUser(userCredential.user);
+                setEmail(email)
+                window.location.href = "/#/buildingpage"
             })
             .catch((error) => {
                 console.log(error.code);
@@ -31,12 +35,23 @@ export function AuthProvider({children}){
             .then((userCredential) => {
                 const user = userCredential.user;
                 setCurrentUser(user);
+                setEmail(email)
+                window.location.href = "/#/buildingpage"
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                console.log(error.code);
+                console.log(error.message);
             });
     }
+
+    function logout(){
+        signOut(auth).then(() => {
+            window.location.href = "/#"
+        }).catch((error) => {
+            console.log(error)
+        });
+    }
+
 
 
     useEffect(() =>{
@@ -44,16 +59,17 @@ export function AuthProvider({children}){
             setCurrentUser(user)
             setLoading(false)
         })
-
         return unsubscribe;
     }, [])
 
 
-
     const value = {
         currentUser,
+        email,
         signup,
-        login
+        login,
+        logout,
+
     }
 
     return(

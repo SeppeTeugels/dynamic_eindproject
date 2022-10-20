@@ -2,7 +2,7 @@ import {Alert, Button, Card, Form} from "react-bootstrap";
 import React, {useRef, useState} from "react";
 import {Link} from "react-router-dom";
 import {useAuth} from "../../contexts/AuthContext";
-
+import {addingUser} from "./UserInfo";
 
 function Register() {
     const emailRef = useRef()
@@ -13,6 +13,8 @@ function Register() {
     const {signup} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+
+
     async function handleSubmit(e) {
         e.preventDefault()
 
@@ -22,14 +24,18 @@ function Register() {
         try {
             setError('')
             setLoading(true)
+            const user = {
+                userName: usernameRef.current.value,
+                age: ageRef.current.value,
+                email: emailRef.current.value
+            };
+            await addingUser(user);
             signup(emailRef.current.value, passwordRef.current.value)
-            window.location.href = "/#/buildingpage"
 
-        } catch (error) {
-            console.log(error)
-            setError('Failed to create an account')
+        } catch (e) {
         }
         setLoading(false)
+        setError('Failed to create an account')
     }
 
     return (<>
@@ -59,9 +65,9 @@ function Register() {
                                 <Form.Label>Confirm Password</Form.Label>
                                 <Form.Control type="password" ref={confirmPasswordRef} required/>
                             </Form.Group>
-                                <Button disabled={loading} className="w-100" id="Login" type="submit">
-                                    Sign up
-                                </Button>
+                            <Button disabled={loading} className="w-100" id="Login" type="submit">
+                                Sign up
+                            </Button>
                         </Form>
 
                     </div>

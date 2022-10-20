@@ -10,19 +10,19 @@ function Login() {
     const {login} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+
     async function handleSubmit(e) {
         e.preventDefault()
         try {
-            setError('')
+            setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            window.location.href = "/#/buildingpage"
-
-        } catch (error) {
+        } catch (e) {
             console.log(error)
-            setError('Failed to log in')
         }
+        setError('Failed to log in')
         setLoading(false)
+
     }
 
     return (<>
