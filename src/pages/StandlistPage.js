@@ -3,14 +3,14 @@ import {Link} from "react-router-dom";
 import {StandListSection} from "../components/stands/StandListSection";
 import {USERS_DATA} from "../data/data";
 import {Button} from "react-bootstrap";
+
 function StandListPage(props) {
     const {stands} = props
-    const user = [{name:"seppe", age:19}]
-    if(user){
+    const user = USERS_DATA[0]
+    if (user) {
+        if (!user.age) return;
         const age = user.age;
-        return (
-            <ShowStand stands={stands} age={age}/>
-        )
+        return (<ShowStand stands={stands} age={age}/>)
     }
 }
 
@@ -19,14 +19,15 @@ export default StandListPage;
 export function ShowStand(props) {
     const {stands, age} = props
     return (<>
-            <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
-                {(age >= 18)?
-                    stands.map((s, i) => <Stand key={i} stand={s}/>)
-                : stands.filter(s => !s.age).map((s, i) => <Stand key={i} stand={s}/>)}
-            </div>
             <div>
                 <Link to="/"><Button> go to homepage </Button></Link>
             </div>
+            <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
+                {(age >= 18) ?
+                    stands.map((s, i) => <Stand key={i} stand={s}/>)
+                    : stands.filter(s => !s.age).map((s, i) => <Stand key={i} stand={s}/>)}
+            </div>
+
         </>
     )
 }

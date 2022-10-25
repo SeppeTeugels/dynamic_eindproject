@@ -18,19 +18,19 @@ function App() {
 
     return (
         <Router>
-            <AuthProvider>
+            {/*<AuthProvider>*/}
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
-                    <Route path="signup" element={<SignUpPage/>}/>
-                    <Route path="profile" element={<ProfilePage/>}/>
-                    <Route path="login" element={<LoginPage/>}/>
-                    <Route path="home" element={<BuildingPage/>}/>
-                    <Route path="dashboard" element={<StandListPage/>}/>
-                    <Route path="buildingpage" element={<BuildingPage/>}/>
-                    <Route path="standlistpage" element={<StandListPage stands={STANDS_DATA}/>}/>
+                    <Route path="/signup" element={<SignUpPage/>}/>
+                    <Route path="/profile" element={<ProfilePage/>}/>
+                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/home" element={<BuildingPage/>}/>
+                    <Route path="/dashboard" element={<StandListPage/>}/>
+                    <Route path="/buildingpage" element={<BuildingPage/>}/>
+                    <Route path="/standlistpage" element={<StandListPage stands={STANDS_DATA}/>}/>
                     <Route path="stands/:Id" element={<StandPage/>}/>
                 </Routes>
-            </AuthProvider>
+        {/*</AuthProvider>*/}
         </Router>
     );
 }

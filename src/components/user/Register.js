@@ -1,8 +1,10 @@
 import {Alert, Button, Card, Form} from "react-bootstrap";
 import React, {useRef, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../../contexts/AuthContext";
 import {addingUser} from "./UserInfo";
+import {USERS_DATA} from "../../data/data";
+import {navigate} from "@storybook/addon-links";
 
 function Register() {
     const emailRef = useRef()
@@ -10,14 +12,16 @@ function Register() {
     const ageRef = useRef()
     const passwordRef = useRef()
     const confirmPasswordRef = useRef()
-    const {signup} = useAuth()
+    // const {signup} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate();
+
+
 
 
     async function handleSubmit(e) {
         e.preventDefault()
-
         if (passwordRef.current.value !== confirmPasswordRef.current.value) {
             return setError('passwords do not match')
         }
@@ -26,11 +30,14 @@ function Register() {
             setLoading(true)
             const user = {
                 userName: usernameRef.current.value,
-                age: ageRef.current.value,
-                email: emailRef.current.value
+                age: Number(ageRef.current.value),
+                email: emailRef.current.value,
             };
-            await addingUser(user);
-            signup(emailRef.current.value, passwordRef.current.value)
+            USERS_DATA.pop()
+            USERS_DATA.push(user)
+            navigate('/buildingpage')
+            // await addingUser(user);
+            // signup(emailRef.current.value, passwordRef.current.value)
 
         } catch (e) {
         }
@@ -44,7 +51,7 @@ function Register() {
                 {error && <Alert variant={"danger"}>{error}</Alert>}
                 <div className={"mx-3"}>
                     <div className={"m-3"}>
-                        <Form onSubmit={handleSubmit} action={"/buildingpage"}>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Group id="email">
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type="email" ref={emailRef} required/>

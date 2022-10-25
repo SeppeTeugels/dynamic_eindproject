@@ -22,7 +22,7 @@ export function AuthProvider({children}){
             .then((userCredential) => {
                 setCurrentUser(userCredential.user);
                 setEmail(email)
-                window.location.href = "/#/buildingpage"
+
             })
             .catch((error) => {
                 console.log(error.code);
@@ -36,7 +36,6 @@ export function AuthProvider({children}){
                 const user = userCredential.user;
                 setCurrentUser(user);
                 setEmail(email)
-                window.location.href = "/#/buildingpage"
             })
             .catch((error) => {
                 console.log(error.code);

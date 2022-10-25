@@ -11,6 +11,4 @@ export const STANDS_DATA =[
 
 ];
 
-export const USERS_DATA =[
-    {id:1, name:"Seppe", lastname:"Teugels", age:19},
-];
+export let USERS_DATA =[];
