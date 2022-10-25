@@ -22,7 +22,6 @@ function BuildingPage() {
                 {/*<Button onClick={handleLogout}> Log out </Button>*/}
             </div>
             <Link to="/standlistpage"><Button>Listing of all the stands</Button></Link>
-            <Link to="/buypage"><Button> buy ticket </Button></Link>
         </div>
     )
 }

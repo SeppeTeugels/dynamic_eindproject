@@ -10,9 +10,6 @@ export default function ProfilePage() {
             {/*<Card.Img variant="top" src="holder.js/100px180?text=Image cap"/>*/}
             <Card.Body>
                 <Card.Title>{user.userName}</Card.Title>
-                <Card.Text>
-                    userinfo:
-                </Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
                 <ListGroup.Item>{`username: ${user.userName}`}</ListGroup.Item>
