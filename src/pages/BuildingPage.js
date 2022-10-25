@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {useAuth} from "../contexts/AuthContext"
-import {GettingUser} from "../components/user/UserInfo";
+import {gettingUser, ShowUser} from "../components/user/UserInfo";
 
 
 function BuildingPage() {
@@ -15,7 +15,6 @@ function BuildingPage() {
         } catch {
         }
     }
-
     return (
         <div>
             <div id="tempnav" className="w-100 float-end" style={{paddingLeft: "80%"}}>
@@ -24,9 +23,6 @@ function BuildingPage() {
                 </Link>
                 <Button onClick={handleLogout}> Log out </Button>
             </div>
-            {
-                <GettingUser/>
-            }
             <Link to="/standlistpage"><Button>Listing of all the stands</Button></Link>
             <Link to="/buypage"><Button> buy ticket </Button></Link>
         </div>

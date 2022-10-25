@@ -3,14 +3,18 @@ import {Link} from "react-router-dom";
 import {StandListSection} from "../components/stands/StandListSection";
 import {USERS_DATA} from "../data/data";
 import {Button} from "react-bootstrap";
+import {gettingUser} from "../components/user/UserInfo";
 
 function StandListPage(props) {
     const {stands} = props
-    let users = USERS_DATA.map(u => u.age)
-    let user = users[0]
-    return (
-           <ShowStand stands={stands} age={user}/>
-    )
+    const user = gettingUser()
+    console.log(user)
+    if(user){
+        const age = user.age;
+        return (
+            <ShowStand stands={stands} age={age}/>
+        )
+    }
 }
 
 export default StandListPage;

@@ -1,8 +1,8 @@
 {
-  "name": "eindopdracht",
+  "name": "node-eindopdracht",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "http://.",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -72,5 +72,19 @@
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
     "webpack": "^5.74.0"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeppeTeugels/dynamic_eindproject.git"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "author": "seppe-teugels",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeppeTeugels/dynamic_eindproject/issues"
   }
 }
