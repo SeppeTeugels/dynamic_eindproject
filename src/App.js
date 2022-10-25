@@ -29,8 +29,6 @@ function App() {
                     <Route path="buildingpage" element={<BuildingPage/>}/>
                     <Route path="standlistpage" element={<StandListPage stands={STANDS_DATA}/>}/>
                     <Route path="stands/:Id" element={<StandPage/>}/>
-
-
                 </Routes>
             </AuthProvider>
         </Router>

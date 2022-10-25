@@ -30,7 +30,7 @@ export async function addingUser(user) {
 }
 
 
-export function gettingUser() {
+export function GettingUser() {
     const collectionRef = collection(firestoreDB, 'User').withConverter(personConverter);
     const queryRef = query(collectionRef)
     const [values] = useCollectionData(queryRef);
@@ -38,7 +38,7 @@ export function gettingUser() {
     const email = currentUser.email;
     if (email.isUndefined) return;
     if (values) {
-        return[...new Set(values.filter(user => user.email === email).map(user => user))];
+        return[...new Set(values.filter(user => user.email === email).map(user => <div>{user.name}</div>))];
     }
 
 }

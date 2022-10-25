@@ -3,12 +3,9 @@ import {Link} from "react-router-dom";
 import {StandListSection} from "../components/stands/StandListSection";
 import {USERS_DATA} from "../data/data";
 import {Button} from "react-bootstrap";
-import {gettingUser} from "../components/user/UserInfo";
-
 function StandListPage(props) {
     const {stands} = props
-    const user = gettingUser()
-    console.log(user)
+    const user = [{name:"seppe", age:19}]
     if(user){
         const age = user.age;
         return (

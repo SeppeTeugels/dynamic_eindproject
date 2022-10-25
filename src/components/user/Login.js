@@ -20,7 +20,7 @@ function Login() {
         } catch (e) {
             console.log(error)
         }
-        setError('Failed to log in')
+        await setError('Failed to log in')
         setLoading(false)
 
     }

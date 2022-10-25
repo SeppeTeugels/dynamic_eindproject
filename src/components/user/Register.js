@@ -35,7 +35,7 @@ function Register() {
         } catch (e) {
         }
         setLoading(false)
-        setError('Failed to create an account')
+        await setError('Failed to create an account')
     }
 
     return (<>
