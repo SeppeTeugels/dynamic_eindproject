@@ -13,14 +13,10 @@ export function UserProvider(props) {
     const getUser = useMemo(() =>
         ({user, setUser, clearUser}), []);
 
-    return <>
-        {
-            user ?
-                <UserProvider value={"text"}>
-                    {props.children}
-                </UserProvider> : props.children
+    return <userContext.Provider value={"text"}>
+        {props.children}
+    </userContext.Provider>
 
-        }  </>
 
 }
 

@@ -3,7 +3,7 @@ import {HashRouter as Router, Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
-import BuildingPage from "./pages/BuildingPage";
+import DashboardPage from "./pages/DashboardPage";
 import StandPage from "./pages/StandPage";
 import StandListPage from "./pages/StandlistPage";
 import {STANDS_DATA} from "./data/data";
@@ -11,8 +11,10 @@ import React from "react";
 import "./services/firebase";
 import {AuthProvider} from "./contexts/AuthContext";
 import ProfilePage from "./pages/profile";
+import Navbar from "./components/navbar/Navbar";
+import './app.css'
 import {UserProvider} from "./contexts/userContext";
-
+import BuyPage from "./pages/Buypage";
 
 function App() {
 
@@ -21,17 +23,20 @@ function App() {
         <Router>
             <UserProvider>
                 <AuthProvider>
+                    <Navbar/>
+                    <div style={{marginLeft:"70px", marginTop:"-80px", zIndex:100}}>
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
-                        <Route path="/signup" element={<SignUpPage/>}/>
-                        <Route path="/profile" element={<ProfilePage/>}/>
-                        <Route path="/login" element={<LoginPage/>}/>
-                        <Route path="/home" element={<BuildingPage/>}/>
-                        <Route path="/dashboard" element={<StandListPage/>}/>
-                        <Route path="/buildingpage" element={<BuildingPage/>}/>
-                        <Route path="/standlistpage" element={<StandListPage stands={STANDS_DATA}/>}/>
+                        <Route path="signup" element={<SignUpPage/>}/>
+                        <Route path="profile" element={<ProfilePage/>}/>
+                        <Route path="login" element={<LoginPage/>}/>
+                        <Route path="home" element={<DashboardPage/>}/>
+                        <Route path="buyPage" element={<BuyPage/>}/>
+                        <Route path="dashboard" element={<DashboardPage/>}/>
+                        <Route path="standlistpage" element={<StandListPage/>}/>
                         <Route path="stands/:Id" element={<StandPage/>}/>
                     </Routes>
+                    </div>
                 </AuthProvider>
             </UserProvider>
         </Router>

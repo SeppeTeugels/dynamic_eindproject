@@ -17,8 +17,8 @@ function Login() {
         try {
             setError("")
             setLoading(true)
-            // await login(emailRef.current.value, passwordRef.current.value)
-            navigate('/buidingpage')
+            await login(emailRef.current.value, passwordRef.current.value)
+            navigate('/dashboard')
         } catch (e) {
             console.log(error)
         }

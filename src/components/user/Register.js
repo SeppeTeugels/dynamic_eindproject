@@ -12,12 +12,10 @@ function Register() {
     const ageRef = useRef()
     const passwordRef = useRef()
     const confirmPasswordRef = useRef()
-    // const {signup} = useAuth()
+    const {signup} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
-
-
 
 
     async function handleSubmit(e) {
@@ -35,9 +33,9 @@ function Register() {
             };
             USERS_DATA.pop()
             USERS_DATA.push(user)
-            navigate('/buildingpage')
-            // await addingUser(user);
-            // signup(emailRef.current.value, passwordRef.current.value)
+            navigate('/dashboard')
+            await addingUser(user);
+            signup(emailRef.current.value, passwordRef.current.value)
 
         } catch (e) {
         }

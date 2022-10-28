@@ -3,7 +3,7 @@ import {Button, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {useAuth} from "../contexts/AuthContext"
 
-function BuildingPage() {
+function DashboardPage() {
     // const {logout} = useAuth()
 
     //
@@ -26,4 +26,4 @@ function BuildingPage() {
     )
 }
 
-export default BuildingPage;
+export default DashboardPage;
