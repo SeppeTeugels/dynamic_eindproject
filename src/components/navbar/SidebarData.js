@@ -18,19 +18,19 @@ export const SidebarData = [
     },
     {
         title: 'Standslist',
-        path: '/s',
+        path: '/standlistpage',
         icon: <IoIcons.IoMdPeople />,
         cName: 'nav-text'
     },
     {
-        title: 'Messages',
-        path: '/messages',
+        title: 'login',
+        path: '/login',
         icon: <FaIcons.FaEnvelopeOpenText />,
         cName: 'nav-text'
     },
     {
         title: 'Support',
-        path: '/support',
+        path: '/login',
         icon: <IoIcons.IoMdHelpCircle />,
         cName: 'nav-text'
     }

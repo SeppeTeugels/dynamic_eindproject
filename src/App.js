@@ -24,7 +24,7 @@ function App() {
             <UserProvider>
                 <AuthProvider>
                     <Navbar/>
-                    <div style={{marginLeft:"70px", marginTop:"-80px", zIndex:100}}>
+                    <div style={{marginLeft:"70px"}}>
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="signup" element={<SignUpPage/>}/>
