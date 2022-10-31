@@ -3,34 +3,43 @@ import {Link} from "react-router-dom";
 import {StandListSection} from "../components/stands/StandListSection";
 import {USERS_DATA} from "../data/data";
 import {Button} from "react-bootstrap";
+import {useUserContext} from "../contexts/userContext";
+import {collection, query} from "firebase/firestore";
+import {firestoreDB} from "../services/firebase";
+import {useCollectionData} from "react-firebase-hooks/firestore";
+const standsConverter = {
+    toFirestore: function (dataInApp) {
+        return {
+        }
 
-function StandListPage(props) {
-    const {stands} = props
-    const user = USERS_DATA[0]
-    if (user) {
-        if (!user.age) return;
-        const age = user.age;
-        return (<ShowStand stands={stands} age={age}/>)
+    },
+    fromFirestore: function (snapshot, options) {
+        const data = snapshot.data(options);
+        return {...data, id: snapshot.id, ref: snapshot.ref}
     }
+};
+
+const collectionRef = collection(firestoreDB, 'Stands').withConverter(standsConverter);
+
+
+function StandListPage() {
+    const queryRef = query(collectionRef)
+    const [values] = useCollectionData(queryRef);
+    const user = useUserContext()
+    return (<>
+        <div>
+            <Link to="/dashboard"><Button> go to homepage </Button></Link>
+        </div>
+        <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
+            {user !== null&&values?
+                (Number(user.age) >= 18) ?
+                    values.map((s, i) => <Stand key={i} stand={s}/>)
+                    : [...values].filter(s => !s.age).map((s, i) => <Stand key={i} stand={s}/>) : ""}
+        </div>
+    </>)
 }
 
 export default StandListPage;
-
-export function ShowStand(props) {
-    const {stands, age} = props
-    return (<>
-            <div>
-                <Link to="/"><Button> go to homepage </Button></Link>
-            </div>
-            <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
-                {(age >= 18) ?
-                    stands.map((s, i) => <Stand key={i} stand={s}/>)
-                    : stands.filter(s => !s.age).map((s, i) => <Stand key={i} stand={s}/>)}
-            </div>
-
-        </>
-    )
-}
 
 export function Stand(props) {
     const {stand} = props

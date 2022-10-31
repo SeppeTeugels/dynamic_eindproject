@@ -4,16 +4,16 @@ const userContext = createContext()
 
 export function UserProvider(props) {
 
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
 
     console.log({user})
 
-    const clearUser = useCallback(() => setUser({}), []);
+    const clearUser = useCallback(() => setUser(null), []);
 
     const getUser = useMemo(() =>
-        ({user, setUser, clearUser}), []);
+        ({user, setUser, clearUser}), [{user, setUser, clearUser}]);
 
-    return <userContext.Provider value={"text"}>
+    return <userContext.Provider value={getUser}>
         {props.children}
     </userContext.Provider>
 

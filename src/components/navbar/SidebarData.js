@@ -8,30 +8,42 @@ export const SidebarData = [
         title: 'Dashboard',
         path: '/dashboard',
         icon: <AiIcons.AiFillHome />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        loggedin: true
     },
     {
         title: 'orders',
         path: '/buyPage',
         icon: <FaIcons.FaCartPlus />,
-        cName: 'nav-text'
+        cName: 'nav-text',
+        loggedin: true
     },
     {
         title: 'Standslist',
         path: '/standlistpage',
-        icon: <IoIcons.IoMdPeople />,
-        cName: 'nav-text'
+        icon: <FaIcons.FaWarehouse/>,
+        cName: 'nav-text',
+        loggedin: true
     },
     {
         title: 'login',
         path: '/login',
-        icon: <FaIcons.FaEnvelopeOpenText />,
-        cName: 'nav-text'
+        icon: <IoIcons.IoMdLogIn/>,
+        cName: 'nav-text',
+        loggedin: false
     },
     {
-        title: 'Support',
-        path: '/login',
-        icon: <IoIcons.IoMdHelpCircle />,
-        cName: 'nav-text'
+        title: 'Signup',
+        path: '/signup',
+        icon: <IoIcons.IoMdCreate />,
+        cName: 'nav-text',
+        loggedin: false
+    },
+    {
+        title: 'Logout',
+        path: '/',
+        icon: <IoIcons.IoMdLogOut />,
+        cName: 'nav-text',
+        loggedin: true
     }
 ];

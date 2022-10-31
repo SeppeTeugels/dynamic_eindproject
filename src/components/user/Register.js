@@ -2,9 +2,7 @@ import {Alert, Button, Card, Form} from "react-bootstrap";
 import React, {useRef, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../../contexts/AuthContext";
-import {addingUser} from "./UserInfo";
-import {USERS_DATA} from "../../data/data";
-import {navigate} from "@storybook/addon-links";
+import {useUserContext} from "../../contexts/userContext";
 
 function Register() {
     const emailRef = useRef()
@@ -16,7 +14,7 @@ function Register() {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
-
+    const {setUser} = useUserContext()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -31,12 +29,9 @@ function Register() {
                 age: Number(ageRef.current.value),
                 email: emailRef.current.value,
             };
-            USERS_DATA.pop()
-            USERS_DATA.push(user)
-            navigate('/dashboard')
-            await addingUser(user);
+            setUser(user)
             signup(emailRef.current.value, passwordRef.current.value)
-
+            navigate('/dashboard')
         } catch (e) {
         }
         setLoading(false)

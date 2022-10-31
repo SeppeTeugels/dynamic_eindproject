@@ -2,6 +2,10 @@ import {Alert, Button, Card, Form} from "react-bootstrap";
 import React, {useRef, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../../contexts/AuthContext";
+import {collection, query} from "firebase/firestore";
+import {firestoreDB} from "../../services/firebase";
+import {useCollectionData} from "react-firebase-hooks/firestore";
+import {useUserContext} from "../../contexts/userContext";
 
 
 function Login() {
@@ -12,12 +16,33 @@ function Login() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 
+    const personConverter = {
+        toFirestore: function (dataInApp) {
+            return {
+                userName: dataInApp.userName,
+                age: Number(dataInApp.age),
+                email: dataInApp.email,
+            }
+
+        },
+        fromFirestore: function (snapshot, options) {
+            const data = snapshot.data(options);
+            return {...data, id: snapshot.id, ref: snapshot.ref}
+        }
+    };
+
+    const collectionRef = collection(firestoreDB, 'User').withConverter(personConverter);
+    const queryRef = query(collectionRef)
+    const [values] = useCollectionData(queryRef);
+    const {setCurrentUser} = useUserContext()
+
     async function handleSubmit(e) {
         e.preventDefault()
         try {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
+            await setCurrentUser(values.filter(v => emailRef.current.value === v.email))
             navigate('/dashboard')
         } catch (e) {
             console.log(error)

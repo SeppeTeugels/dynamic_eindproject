@@ -3,6 +3,7 @@ import {firestoreDB} from "../../services/firebase";
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 import {Card, Col} from "react-bootstrap";
 import {useAuth} from "../../contexts/AuthContext";
+import {useUserContext} from "../../contexts/userContext";
 
 const personConverter = {
     toFirestore: function (dataInApp) {
@@ -27,20 +28,6 @@ export async function addingUser(user) {
     } catch {
         console.log("ERROR add user Not done")
     }
-}
-
-
-export function GettingUser() {
-    const collectionRef = collection(firestoreDB, 'User').withConverter(personConverter);
-    const queryRef = query(collectionRef)
-    const [values] = useCollectionData(queryRef);
-    const {currentUser} = useAuth()
-    const email = currentUser.email;
-    if (email.isUndefined) return;
-    if (values) {
-        return[...new Set(values.filter(user => user.email === email).map(user => <div>{user.name}</div>))];
-    }
-
 }
 
 export function ShowUser(props) {
