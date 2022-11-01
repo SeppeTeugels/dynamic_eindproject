@@ -16,19 +16,19 @@ import {UserProvider} from "./contexts/userContext";
 import BuyPage from "./pages/Buypage";
 
 function App() {
-
+    const [loggedIn,setLoggedIn]= useLocalStorage("loggedIn", false)
     return (
         <Router>
             <UserProvider>
                 <AuthProvider>
-                    <Navbar/>
-                    <div style={{marginLeft:"70px", backgroundColor:"#598392"}}>
+                    <Navbar loggedIn={loggedIn}/>
+                    <div style={{marginLeft:"70px"}}>
                     <Routes>
-                        <Route path="/" element={<HomePage/>}/>
-                        <Route path="signup" element={<SignUpPage />}/>
+                        <Route path="/" element={<HomePage setLoggedIn={setLoggedIn} />}/>
+                        <Route path="signup" element={<SignUpPage setLoggedIn={setLoggedIn}/>}/>
                         <Route path="profile" element={<ProfilePage/>}/>
-                        <Route path="login" element={<LoginPage/>}/>
-                        <Route path="home" element={<DashboardPage/>}/>
+                        <Route path="login" element={<LoginPage setLoggedIn={setLoggedIn}/>}/>
+                        <Route path="home" element={<DashboardPage setLoggedIn={setLoggedIn}/>}/>
                         <Route path="buyPage" element={<BuyPage/>}/>
                         <Route path="dashboard" element={<DashboardPage/>}/>
                         <Route path="standlistpage" element={<StandListPage/>}/>

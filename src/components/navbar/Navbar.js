@@ -5,16 +5,11 @@ import {Link} from 'react-router-dom';
 import {SidebarData} from './SidebarData';
 import './Navbar.css';
 import {IconContext} from 'react-icons';
-import {useUserContext} from "../../contexts/userContext";
 
-function Navbar() {
+function Navbar(props) {
     const [sidebar, setSidebar] = useState(false);
-    const [loggedIn, setLoggedIn] = useState(false)
+    const {loggedIn} = props
     const showSidebar = () => setSidebar(!sidebar);
-    const {user} = useUserContext()
-    if (user !== null) {
-        setLoggedIn(true)
-    }
     return (
         <>
             <IconContext.Provider value={{color: '#fff'}}>
@@ -50,6 +45,7 @@ function Navbar() {
                                     </Link>
                                 </li>
                             );
+                        })
                         })}
                     </ul>
                 </nav>

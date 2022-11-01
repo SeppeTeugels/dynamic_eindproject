@@ -7,34 +7,34 @@ import {firestoreDB} from "../../services/firebase";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import {useUserContext} from "../../contexts/userContext";
 
+const personConverter = {
+    toFirestore: function (dataInApp) {
+        return {
+            userName: dataInApp.userName,
+            age: Number(dataInApp.age),
+            email: dataInApp.email,
+        }
 
-function Login() {
+    },
+    fromFirestore: function (snapshot, options) {
+        const data = snapshot.data(options);
+        return {...data, id: snapshot.id, ref: snapshot.ref}
+    }
+};
+
+const collectionRef = collection(firestoreDB, 'User').withConverter(personConverter);
+const queryRef = query(collectionRef)
+
+function Login(props) {
     const emailRef = useRef()
     const passwordRef = useRef()
     const {login} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
-
-    const personConverter = {
-        toFirestore: function (dataInApp) {
-            return {
-                userName: dataInApp.userName,
-                age: Number(dataInApp.age),
-                email: dataInApp.email,
-            }
-
-        },
-        fromFirestore: function (snapshot, options) {
-            const data = snapshot.data(options);
-            return {...data, id: snapshot.id, ref: snapshot.ref}
-        }
-    };
-
-    const collectionRef = collection(firestoreDB, 'User').withConverter(personConverter);
-    const queryRef = query(collectionRef)
     const [values] = useCollectionData(queryRef);
-    const {setCurrentUser} = useUserContext()
+    const {setUser} = useUserContext();
+    const {setLoggedIn} = props
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -42,7 +42,8 @@ function Login() {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            await setCurrentUser(values.filter(v => emailRef.current.value === v.email))
+            await setUser(values.find(v => emailRef.current.value === v.email))
+            setLoggedIn(true)
             navigate('/dashboard')
         } catch (e) {
             console.log(error)

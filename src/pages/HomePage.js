@@ -13,7 +13,6 @@ function HomePage() {
             <h1>Welcome to the convention</h1>
             <Link to={"/signup"}><Button> sign up </Button></Link>
             <Link to={"/login"}><Button> log in </Button></Link>
-            <Link to={"/buypage"}><Button> buy ticket </Button></Link>
         </Container>
     );
 }

@@ -1,16 +1,20 @@
 import React from 'react';
-import {Button, Card} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../contexts/AuthContext"
 import {useUserContext} from "../contexts/userContext";
+import * as events from "events";
 
-function DashboardPage() {
+function DashboardPage(props) {
     const {logout} = useAuth()
     const {user} = useUserContext()
+    const {setLoggedIn} = props
     const navigate = useNavigate();
+    console.log(user)
     async function handleLogout() {
         try {
             await logout();
+            setLoggedIn(false)
             navigate("/")
         } catch {
         }

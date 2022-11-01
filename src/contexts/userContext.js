@@ -6,14 +6,12 @@ export function UserProvider(props) {
 
     const [user, setUser] = useState(null)
 
-    console.log({user})
-
     const clearUser = useCallback(() => setUser(null), []);
 
-    const getUser = useMemo(() =>
-        ({user, setUser, clearUser}), [{user, setUser, clearUser}]);
+    const Api = useMemo(() =>
+        ({user, setUser, clearUser}), []);
 
-    return <userContext.Provider value={getUser}>
+    return <userContext.Provider value={Api}>
         {props.children}
     </userContext.Provider>
 

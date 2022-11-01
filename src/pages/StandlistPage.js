@@ -1,16 +1,15 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {StandListSection} from "../components/stands/StandListSection";
-import {USERS_DATA} from "../data/data";
 import {Button} from "react-bootstrap";
 import {useUserContext} from "../contexts/userContext";
 import {collection, query} from "firebase/firestore";
 import {firestoreDB} from "../services/firebase";
 import {useCollectionData} from "react-firebase-hooks/firestore";
+
 const standsConverter = {
     toFirestore: function (dataInApp) {
-        return {
-        }
+        return {}
 
     },
     fromFirestore: function (snapshot, options) {
@@ -25,16 +24,17 @@ const collectionRef = collection(firestoreDB, 'Stands').withConverter(standsConv
 function StandListPage() {
     const queryRef = query(collectionRef)
     const [values] = useCollectionData(queryRef);
-    const user = useUserContext()
+    const {user} = useUserContext()
+    console.log(user)
     return (<>
         <div>
             <Link to="/dashboard"><Button> go to homepage </Button></Link>
         </div>
         <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
-            {user !== null&&values?
-                (Number(user.age) >= 18) ?
-                    values.map((s, i) => <Stand key={i} stand={s}/>)
-                    : [...values].filter(s => !s.age).map((s, i) => <Stand key={i} stand={s}/>) : ""}
+            {user !== null && values?
+            (user.age >= 18) ?
+                values.map((s, i) => <Stand key={i} stand={s}/>)
+                : [...values].filter(s => !s.age).map((s, i) => <Stand key={i} stand={s}/>) : ""}
         </div>
     </>)
 }

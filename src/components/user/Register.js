@@ -3,8 +3,9 @@ import React, {useRef, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../../contexts/AuthContext";
 import {useUserContext} from "../../contexts/userContext";
+import {addingUser} from "./UserInfo";
 
-function Register() {
+function Register(props) {
     const emailRef = useRef()
     const usernameRef = useRef()
     const ageRef = useRef()
@@ -15,6 +16,7 @@ function Register() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
     const {setUser} = useUserContext()
+    const {setLoggedIn} = props;
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -30,7 +32,9 @@ function Register() {
                 email: emailRef.current.value,
             };
             setUser(user)
-            signup(emailRef.current.value, passwordRef.current.value)
+            await addingUser(user)
+            setLoggedIn(true)
+            await signup(emailRef.current.value, passwordRef.current.value)
             navigate('/dashboard')
         } catch (e) {
         }

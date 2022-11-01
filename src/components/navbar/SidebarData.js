@@ -7,14 +7,14 @@ export const SidebarData = [
     {
         title: 'Dashboard',
         path: '/dashboard',
-        icon: <AiIcons.AiFillHome />,
+        icon: <AiIcons.AiFillHome/>,
         cName: 'nav-text',
         loggedin: true
     },
     {
         title: 'orders',
         path: '/buyPage',
-        icon: <FaIcons.FaCartPlus />,
+        icon: <FaIcons.FaCartPlus/>,
         cName: 'nav-text',
         loggedin: true
     },
@@ -35,15 +35,15 @@ export const SidebarData = [
     {
         title: 'Signup',
         path: '/signup',
-        icon: <IoIcons.IoMdCreate />,
+        icon: <IoIcons.IoMdCreate/>,
         cName: 'nav-text',
         loggedin: false
     },
-    {
-        title: 'Logout',
-        path: '/',
-        icon: <IoIcons.IoMdLogOut />,
-        cName: 'nav-text',
-        loggedin: true
-    }
+    // {
+    //     title: 'Logout',
+    //     path: '/',
+    //     icon: <IoIcons.IoMdLogOut />,
+    //     cName: 'nav-text',
+    //     loggedin: true
+    // }
 ];
