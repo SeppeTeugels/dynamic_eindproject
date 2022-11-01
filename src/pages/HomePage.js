@@ -1,8 +1,14 @@
 import React from 'react';
 import {Button, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {useUserContext} from "../contexts/userContext";
 
-function HomePage() {
+function HomePage(props) {
+    const {user} = useUserContext()
+    const {setLoggedIn} = props
+    if (user === null){
+        setLoggedIn(false)
+    }
     return (
         <Container style={{margin: 0, marginTop:"50px", height: "100%"}}>
             <Row>

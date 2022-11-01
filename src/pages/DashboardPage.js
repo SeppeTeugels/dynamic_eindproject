@@ -5,16 +5,14 @@ import {useAuth} from "../contexts/AuthContext"
 import {useUserContext} from "../contexts/userContext";
 import * as events from "events";
 
-function DashboardPage(props) {
+function DashboardPage() {
     const {logout} = useAuth()
     const {user} = useUserContext()
-    const {setLoggedIn} = props
     const navigate = useNavigate();
-    console.log(user)
+
     async function handleLogout() {
         try {
             await logout();
-            setLoggedIn(false)
             navigate("/")
         } catch {
         }
