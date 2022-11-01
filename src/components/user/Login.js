@@ -42,6 +42,7 @@ function Login(props) {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
+            console.log(values.find(v => emailRef.current.value === v.email))
             await setUser(values.find(v => emailRef.current.value === v.email))
             setLoggedIn(true)
             navigate('/dashboard')

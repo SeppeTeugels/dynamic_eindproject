@@ -14,6 +14,7 @@ import Navbar from "./components/navbar/Navbar";
 import './app.css'
 import {UserProvider} from "./contexts/userContext";
 import BuyPage from "./pages/Buypage";
+import ProductsListPage from "./pages/ProductslistPage";
 
 function App() {
     const [loggedIn,setLoggedIn]= useLocalStorage("loggedIn", false)
@@ -32,6 +33,7 @@ function App() {
                         <Route path="buyPage" element={<BuyPage/>}/>
                         <Route path="dashboard" element={<DashboardPage/>}/>
                         <Route path="standlistpage" element={<StandListPage/>}/>
+                        <Route path="productslistpage" element={<ProductsListPage/>}/>
                         <Route path="stands/:Id" element={<StandPage/>}/>
                     </Routes>
                     </div>
