@@ -26,6 +26,13 @@ export const SidebarData = [
         loggedin: true
     },
     {
+        title: 'Produclist',
+        path: '/productslistpage/all',
+        icon: <IoIcons.IoMdList/>,
+        cName: 'nav-text',
+        loggedin: true
+    },
+    {
         title: 'login',
         path: '/login',
         icon: <IoIcons.IoMdLogIn/>,
@@ -38,7 +45,7 @@ export const SidebarData = [
         icon: <IoIcons.IoMdCreate/>,
         cName: 'nav-text',
         loggedin: false
-    },
+    }
     // {
     //     title: 'Logout',
     //     path: '/',

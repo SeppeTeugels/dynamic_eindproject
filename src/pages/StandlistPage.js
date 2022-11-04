@@ -46,7 +46,7 @@ export function Stand(props) {
     return (
 
         <StandListSection>
-            <Link to={`/stands/${stand.id}`}><h1>{stand.name}</h1></Link>
+            <Link to={`/productslistpage/${stand.name}`}><h1>{stand.name}</h1></Link>
             <img src={`${stand.logo}`} alt="stand logo" style={{maxWidth: "500px"}}/>
         </StandListSection>
 

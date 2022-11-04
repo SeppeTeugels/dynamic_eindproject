@@ -5,6 +5,18 @@ import {useAuth} from "../../contexts/AuthContext";
 import {useUserContext} from "../../contexts/userContext";
 import {addingUser} from "./UserInfo";
 
+
+export function getAge(ageRef) {
+    const today = new Date();
+    const birthDate = new Date(ageRef.current.value);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
 function Register(props) {
     const emailRef = useRef()
     const usernameRef = useRef()
@@ -26,9 +38,11 @@ function Register(props) {
         try {
             setError('')
             setLoading(true)
+            console.log(getAge(ageRef))
             const user = {
                 userName: usernameRef.current.value,
-                age: Number(ageRef.current.value),
+                birthday:ageRef.current.value,
+                age: Number(getAge(ageRef)),
                 email: emailRef.current.value,
             };
             setUser(user)
@@ -59,7 +73,7 @@ function Register(props) {
                             </Form.Group>
                             <Form.Group id="age">
                                 <Form.Label>Age</Form.Label>
-                                <Form.Control type="number" ref={ageRef}/>
+                                <Form.Control type="date" ref={ageRef}/>
                             </Form.Group>
                             <Form.Group id="password">
                                 <Form.Label>Password</Form.Label>

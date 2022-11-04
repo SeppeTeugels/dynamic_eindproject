@@ -1,25 +1,33 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import {USERS_DATA} from "../data/data";
+import {useUserContext} from "../contexts/userContext";
+import {Button, Container} from "react-bootstrap";
+import React from "react";
+import {Link} from "react-router-dom";
 
 export default function ProfilePage() {
-    const user = USERS_DATA[0]
+    const {user} = useUserContext()
+    console.log(user)
+    if (user === null) return;
     return <div>
+        <Container className="d-flex align-items-center justify-content-center">
+            <div className="w-100" style={{maxWidth: '400px', marginTop: '20px'}}>
+                <Card style={{width: '18rem', borderRadius: "15px 15px 5px 5px"}}>
+                    <Card.Body>
+                        <Card.Title>{user.userName}</Card.Title>
+                    </Card.Body>
+                    <ListGroup className="list-group-flush">
+                        <ListGroup.Item>{`username: ${user.userName}`}</ListGroup.Item>
+                        <ListGroup.Item>{`age: ${user.age}`}</ListGroup.Item>
+                        <ListGroup.Item>{`birthday: ${user.birthday}`}</ListGroup.Item>
+                        <ListGroup.Item>{`email: ${user.email}`}</ListGroup.Item>
+                    </ListGroup>
+                </Card>
+            </div>
 
-        <Card style={{width: '18rem'}}>
-            {/*<Card.Img variant="top" src="holder.js/100px180?text=Image cap"/>*/}
-            <Card.Body>
-                <Card.Title>{user.userName}</Card.Title>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-                <ListGroup.Item>{`username: ${user.userName}`}</ListGroup.Item>
-                <ListGroup.Item>{`age: ${user.age}`}</ListGroup.Item>
-                <ListGroup.Item>{`email: ${user.email}`}</ListGroup.Item>
-            </ListGroup>
-            {/*<Card.Body>*/}
-            {/*    <Card.Link href="#">Card Link</Card.Link>*/}
-            {/*    <Card.Link href="#">Another Link</Card.Link>*/}
-            {/*</Card.Body>*/}
-        </Card>
+        </Container>
+        <div>
+            <Link to="/dashboard"><Button> go to homepage </Button></Link>
+        </div>
     </div>
 }

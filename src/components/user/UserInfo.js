@@ -1,14 +1,11 @@
-import {addDoc, collection, query} from "firebase/firestore";
+import {addDoc, collection} from "firebase/firestore";
 import {firestoreDB} from "../../services/firebase";
-import {useCollectionData} from 'react-firebase-hooks/firestore'
 import {Card, Col} from "react-bootstrap";
-import {useAuth} from "../../contexts/AuthContext";
-import {useUserContext} from "../../contexts/userContext";
-
 const personConverter = {
     toFirestore: function (dataInApp) {
         return {
             userName: dataInApp.userName,
+            birthday:dataInApp.birthday,
             age: Number(dataInApp.age),
             email: dataInApp.email,
         }
