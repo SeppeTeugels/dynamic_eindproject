@@ -33,6 +33,13 @@ export const SidebarData = [
         loggedin: true
     },
     {
+        title: 'User Proflie',
+        path: '/profile',
+        icon: <IoIcons.IoMdPerson/>,
+        cName: 'nav-text',
+        loggedin: true
+    },
+    {
         title: 'login',
         path: '/login',
         icon: <IoIcons.IoMdLogIn/>,

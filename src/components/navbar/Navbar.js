@@ -5,11 +5,27 @@ import {Link} from 'react-router-dom';
 import {SidebarData} from './SidebarData';
 import './Navbar.css';
 import {IconContext} from 'react-icons';
+import {useUserContext} from "../../contexts/userContext";
+import {useCartContext} from "../../contexts/ShoppingCartContext";
 
 function Navbar(props) {
     const [sidebar, setSidebar] = useState(false);
     const {loggedIn} = props
+    const {user} = useUserContext();
+    const {cart} = useCartContext();
+    console.log(cart);
     const showSidebar = () => setSidebar(!sidebar);
+    const today = new Date()
+    const curHr = today.getHours()
+    let greeting = ""
+    if (curHr < 12) {
+        greeting = 'good morning'
+    } else if (curHr < 18) {
+        greeting = 'good afternoon'
+    } else {
+        greeting = 'good evening'
+    }
+
     return (
         <>
             <IconContext.Provider value={{color: '#fff'}}>
@@ -27,7 +43,11 @@ function Navbar(props) {
                                 <AiIcons.AiOutlineClose/>
                             </Link>
                         </li>
-                        {loggedIn ? [...SidebarData].filter(s => s.loggedin === true).map((item, index) => {
+                        <h5 style={{
+                            color: 'white',
+                            paddingLeft: "20px"
+                        }}>{user && user.userName ? `${greeting}, ${user.userName}` : ""}</h5>
+                        {loggedIn ? [...SidebarData].filter(s => s.loggedin === true && s.title !== "orders").map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
                                     <Link to={item.path}>
@@ -46,7 +66,22 @@ function Navbar(props) {
                                 </li>
                             );
                         })
-                        })}
+                        }
+                        {loggedIn ? [...SidebarData].filter(s => s.loggedin === true && s.title === "orders").map((item, index) => {
+                            return (
+                                <li key={index} className={item.cName}>
+                                    <Link to={item.path}>
+                                        {item.icon}
+                                        <span style={{marginRight:"10px"}}>{item.title}</span>
+                                        <div
+                                            className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                                            style={{color: "white", width:"1.5rem", height: "1.5rem"}}>
+                                            {cart? cart.length :0}
+                                        </div>
+                                    </Link>
+                                </li>
+                            );
+                        }) : ""}
                     </ul>
                 </nav>
             </IconContext.Provider>

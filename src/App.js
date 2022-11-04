@@ -15,30 +15,34 @@ import './app.css'
 import {UserProvider} from "./contexts/userContext";
 import BuyPage from "./pages/Buypage";
 import ProductsListPage from "./pages/ProductslistPage";
+import {ShoppingCartProvider} from "./contexts/ShoppingCartContext";
 
 function App() {
-    const [loggedIn,setLoggedIn]= useLocalStorage("loggedIn", false)
+    const [loggedIn, setLoggedIn] = useLocalStorage("loggedIn", false)
+    const [cart, setCart] = useLocalStorage("cart", null)
     return (
         <Router>
-            <UserProvider>
-                <AuthProvider>
-                    <Navbar loggedIn={loggedIn}/>
-                    <div style={{marginLeft:"70px"}}>
-                    <Routes>
-                        <Route path="/" element={<HomePage setLoggedIn={setLoggedIn} />}/>
-                        <Route path="signup" element={<SignUpPage setLoggedIn={setLoggedIn}/>}/>
-                        <Route path="profile" element={<ProfilePage/>}/>
-                        <Route path="login" element={<LoginPage setLoggedIn={setLoggedIn}/>}/>
-                        <Route path="home" element={<DashboardPage setLoggedIn={setLoggedIn}/>}/>
-                        <Route path="buyPage" element={<BuyPage/>}/>
-                        <Route path="dashboard" element={<DashboardPage/>}/>
-                        <Route path="standlistpage" element={<StandListPage/>}/>
-                        <Route path="productslistpage/:Id" element={<ProductsListPage/>}/>
-                        <Route path="stands/:Id" element={<StandPage/>}/>
-                    </Routes>
-                    </div>
-                </AuthProvider>
-            </UserProvider>
+            <ShoppingCartProvider>
+                <UserProvider>
+                    <AuthProvider>
+                        <Navbar loggedIn={loggedIn}/>
+                        <div style={{marginLeft: "70px"}}>
+                            <Routes>
+                                <Route path="/" element={<HomePage setLoggedIn={setLoggedIn}/>}/>
+                                <Route path="signup" element={<SignUpPage setLoggedIn={setLoggedIn}/>}/>
+                                <Route path="profile" element={<ProfilePage/>}/>
+                                <Route path="login" element={<LoginPage setLoggedIn={setLoggedIn}/>}/>
+                                <Route path="home" element={<DashboardPage setLoggedIn={setLoggedIn}/>}/>
+                                <Route path="buyPage" element={<BuyPage/>}/>
+                                <Route path="dashboard" element={<DashboardPage/>}/>
+                                <Route path="standlistpage" element={<StandListPage/>}/>
+                                <Route path="productslistpage/:Id" element={<ProductsListPage/>}/>
+                                <Route path="stands/:Id" element={<StandPage/>}/>
+                            </Routes>
+                        </div>
+                    </AuthProvider>
+                </UserProvider>
+            </ShoppingCartProvider>
         </Router>
     );
 }
