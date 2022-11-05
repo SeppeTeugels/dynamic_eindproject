@@ -35,27 +35,26 @@ function Login(props) {
     const [values] = useCollectionData(queryRef);
     const {setUser} = useUserContext();
     const {setLoggedIn} = props
-
     async function handleSubmit(e) {
         e.preventDefault()
+
         try {
             setError("")
             setLoading(true)
+            setUser(values.find(v => emailRef.current.value === v.email))
             await login(emailRef.current.value, passwordRef.current.value)
             console.log(values.find(v => emailRef.current.value === v.email))
-            await setUser(values.find(v => emailRef.current.value === v.email))
             setLoggedIn(true)
-            navigate('/dashboard')
         } catch (e) {
             console.log(error)
         }
-        await setError('Failed to log in')
+        setError('Failed to log in')
         setLoading(false)
 
     }
 
     return (<>
-            <Card>
+            <Card onLoad={() => setLoggedIn(false)}>
                 <h1>Log in</h1>
                 {error && <Alert variant={"danger"}>{error}</Alert>}
                 <div className={"mx-3"}>

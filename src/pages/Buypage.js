@@ -1,11 +1,16 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useCartContext} from "../contexts/ShoppingCartContext";
+import {useUserContext} from "../contexts/userContext";
 
 function BuyPage() {
     const {cart} = useCartContext()
+    const navigate = useNavigate();
+    const{user} = useUserContext();
+    if (user === null)return navigate("/login")
     if (!cart) return
+
 
     const price = cart.map(p => p.price).reduce((a, b) => a + b).toFixed(2)
 

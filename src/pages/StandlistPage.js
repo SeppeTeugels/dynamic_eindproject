@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {StandListSection} from "../components/stands/StandListSection";
 import {Button} from "react-bootstrap";
 import {useUserContext} from "../contexts/userContext";
@@ -24,8 +24,10 @@ const collectionRef = collection(firestoreDB, 'Stands').withConverter(standsConv
 function StandListPage() {
     const queryRef = query(collectionRef)
     const [values] = useCollectionData(queryRef);
-    const {user} = useUserContext()
-    console.log(user)
+
+    const navigate = useNavigate();
+    const{user} = useUserContext();
+    if (user === null)return navigate("/login")
     return (<>
         <div>
             <Link to="/dashboard"><Button> go to homepage </Button></Link>

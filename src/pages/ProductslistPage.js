@@ -1,11 +1,12 @@
 import React from 'react';
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams, useNavigate} from "react-router-dom";
 import {StandListSection} from "../components/stands/StandListSection";
 import {Button} from "react-bootstrap";
 import {collection, query} from "firebase/firestore";
 import {firestoreDB} from "../services/firebase";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import {useCartContext} from "../contexts/ShoppingCartContext";
+import {useUserContext} from "../contexts/userContext";
 
 const productsConverter = {
     toFirestore: function (dataInApp) {
@@ -25,28 +26,30 @@ function ProductsListPage() {
     const queryRef = query(collectionRef)
     const [values] = useCollectionData(queryRef);
     const params = useParams();
+
+    const navigate = useNavigate();
+    const{user} = useUserContext();
+    if (user === null)return navigate("/login")
+
     return (<>
         <div>
             <Link to="/dashboard"><Button> go to homepage </Button></Link>
         </div>
         <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
-            {params === "all" && values ? values.map((s, i) =>
-                <Stand key={i} product={s}/>) : values ? values.map((s, i) =>
-                <Stand key={i} product={s}/>) : ""}
+            {params.Id === "all" && values? user.age >= 18? values.map((s, i) =>
+                <Product key={i} product={s}/>): values.filter( v => !v.age).map((s, i) =>
+                <Product key={i} product={s}/>):""}
         </div>
         <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
-            {params && values ? [...values].filter(s => s.standName === params.Id).map((s, i) =>
-                <Stand key={i} product={s}/>) : values ? values.map((s, i) =>
-                <Stand key={i} product={s}/>) : ""}
+            {params && values ? values.filter(s => s.standName === params.Id).map((s, i) => <Product key={i} product={s}/>) : ""}
         </div>
     </>)
 }
 
 export default ProductsListPage;
 
-export function Stand(props) {
+export function Product(props) {
     const {product} = props
-    const quantity = 0;
     const {cart ,setCart} = useCartContext();
     return (
         <StandListSection>

@@ -1,16 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button} from "react-bootstrap";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../contexts/AuthContext"
+import {useUserContext} from "../contexts/userContext";
 
-function DashboardPage() {
+function DashboardPage(props) {
     const {logout} = useAuth()
     const navigate = useNavigate();
+    const{user} = useUserContext();
+    const {setLoggedIn} = props;
+    useEffect(() => {if (user === null)return navigate("/login")})
+
 
     async function handleLogout() {
         try {
             await logout();
-            navigate("/")
+            setLoggedIn(false)
         } catch {
         }
     }

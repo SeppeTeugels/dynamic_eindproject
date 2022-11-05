@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {HashRouter as Router, Route, Routes} from "react-router-dom";
+import {HashRouter as Router, Route, Routes, useNavigate} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
@@ -12,26 +12,25 @@ import {AuthProvider} from "./contexts/AuthContext";
 import ProfilePage from "./pages/profile";
 import Navbar from "./components/navbar/Navbar";
 import './app.css'
-import {UserProvider} from "./contexts/userContext";
+import {UserProvider, useUserContext} from "./contexts/userContext";
 import BuyPage from "./pages/Buypage";
 import ProductsListPage from "./pages/ProductslistPage";
 import {ShoppingCartProvider} from "./contexts/ShoppingCartContext";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useLocalStorage("loggedIn", false)
-    const [cart, setCart] = useLocalStorage("cart", null)
+    const [loggedIn, setLoggedIn] = useLocalStorage("loggedIn", false);
     return (
         <Router>
             <ShoppingCartProvider>
                 <UserProvider>
-                    <AuthProvider>
+                    <AuthProvider setLoggedIn={setLoggedIn}>
                         <Navbar loggedIn={loggedIn}/>
                         <div style={{marginLeft: "70px"}}>
                             <Routes>
                                 <Route path="/" element={<HomePage setLoggedIn={setLoggedIn}/>}/>
                                 <Route path="signup" element={<SignUpPage setLoggedIn={setLoggedIn}/>}/>
-                                <Route path="profile" element={<ProfilePage/>}/>
                                 <Route path="login" element={<LoginPage setLoggedIn={setLoggedIn}/>}/>
+                                <Route path="profile" element={<ProfilePage/>}/>
                                 <Route path="home" element={<DashboardPage setLoggedIn={setLoggedIn}/>}/>
                                 <Route path="buyPage" element={<BuyPage/>}/>
                                 <Route path="dashboard" element={<DashboardPage/>}/>

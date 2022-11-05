@@ -3,12 +3,13 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import {useUserContext} from "../contexts/userContext";
 import {Button, Container} from "react-bootstrap";
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function ProfilePage() {
-    const {user} = useUserContext()
-    console.log(user)
-    if (user === null) return;
+
+    const navigate = useNavigate();
+    const{user} = useUserContext();
+    if (user === null)return navigate("/login")
     return <div>
         <Container className="d-flex align-items-center justify-content-center">
             <div className="w-100" style={{maxWidth: '400px', marginTop: '20px'}}>

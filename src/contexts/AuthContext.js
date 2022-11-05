@@ -2,6 +2,7 @@ import React, {useContext, useMemo, useState} from 'react'
 import {getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth"
 import app from "../services/firebase";
 import {useUserContext} from "./userContext";
+import {useNavigate} from "react-router-dom";
 
 const AuthContext = React.createContext();
 
@@ -17,6 +18,7 @@ export function AuthProvider({children}){
     const [currentUser, setCurrentUser] = useState();
     const [loading] = useState();
     const {clearUser} = useUserContext()
+    const navigate = useNavigate();
 
 
     function signup(email, password) {
@@ -35,6 +37,9 @@ export function AuthProvider({children}){
             .then((userCredential) => {
                 const user = userCredential.user;
                 setCurrentUser(user);
+                if(user !== null) {
+                    navigate('/dashboard')
+                }
             })
             .catch((error) => {
                 console.log(error.code);
@@ -45,6 +50,7 @@ export function AuthProvider({children}){
     function logout(){
         signOut(auth).then(() => {
             clearUser()
+            navigate('/')
         }).catch((error) => {
             console.log(error)
         });
