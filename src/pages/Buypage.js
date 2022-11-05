@@ -35,10 +35,10 @@ function BuyPage() {
                 }}>
 
                     <div style={{display: "flex", wordBreak: "break-all", flexWrap:"nowrap", alignItems:"flex-end", flexDirection: "column" ,width: "300px"}}>
-                        <h1 style={{marginTop: "20px",float: "right"}}>
+                        <h2 style={{marginTop: "20px",float: "right"}}>
                             {`Total: €${price}`}
-                        </h1>
-                        <Button style={{marginTop: "20px", marginLeft:"40px", width:"80%", marginBottom:" 10px"}}>
+                        </h2>
+                        <Button style={{marginTop: "20px", marginLeft:"40px", width:"70%", marginBottom:" 10px"}}>
                         pay now
                     </Button>
                     </div>
@@ -47,7 +47,6 @@ function BuyPage() {
 
 
         </div>
-    <Link to="/standlistpage"><Button>Listing of all the stands</Button></Link>
     </>
     )
 }
@@ -80,15 +79,15 @@ export function ShowCart(props) {
                         <img src={`/images/${item.image}`} alt={"product image"} height={"120px"}/>
                     </div>
                     <div>
-                        <h1 style={{
+                        <h3 style={{
                             paddingTop: "5px",
                             textAlign:"center"
-                        }}>{item.name}</h1>
+                        }}>{item.name}</h3>
                     </div>
                     <div>
-                        <h1 style={{
+                        <h3 style={{
                             paddingTop: "5px",
-                        }}>{`€${item.price.toFixed(2)}`}</h1>
+                        }}>{`€${item.price.toFixed(2)}`}</h3>
                     </div>
                 </div>
             </div>
