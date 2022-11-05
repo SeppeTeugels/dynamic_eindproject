@@ -34,6 +34,26 @@ function Navbar(props) {
                         <Link to='#' className={'menu-bars'}>
                             <FaIcons.FaBars onClick={showSidebar}/>
                         </Link>
+                        {(cart && cart.length > 0)?
+                            <Link to='#' style={{display: "flex", width: "100%"}} onClick={showSidebar}>
+                                <FaIcons.FaCartPlus style={{fontSize: "30px", marginTop: "10px", marginLeft: "10px"}}>
+                                </FaIcons.FaCartPlus>
+                                <div
+                                    className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                                    style={{
+                                        color: "white",
+                                        width: "1.5rem",
+                                        height: "1.5rem",
+                                        position: "absolute",
+                                        bottom: 0,
+                                        right: 0,
+                                        transform: "translate(-120%, 120%)",
+                                    }}
+                                >
+                                    {cart ? cart.length : 0}
+                                </div>
+                            </Link>:""}
+
                     </div>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -72,11 +92,11 @@ function Navbar(props) {
                                 <li key={index} className={item.cName}>
                                     <Link to={item.path}>
                                         {item.icon}
-                                        <span style={{marginRight:"10px"}}>{item.title}</span>
+                                        <span style={{marginRight: "10px"}}>{item.title}</span>
                                         <div
                                             className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
-                                            style={{color: "white", width:"1.5rem", height: "1.5rem"}}>
-                                            {cart? cart.length :0}
+                                            style={{color: "white", width: "1.5rem", height: "1.5rem"}}>
+                                            {cart ? cart.length : 0}
                                         </div>
                                     </Link>
                                 </li>

@@ -53,7 +53,7 @@ export function Stand(props) {
             <img src={`images/${product.image}`} alt="stand logo" style={{maxWidth: "500px"}}/>
 
             <div className="d-flex flex-column">
-                <div className="d-flex justify-content-between align-items-baseline mb-4"
+                <div className="d-flex justify-content-sm-around align-items-baseline mb-4"
                      style={{marginTop: "20px", borderTop: "2px solid gray"}}>
                     <div style={{marginTop: "20px"}}>
                         <h1>{product.name ? product.name : ""}</h1>
@@ -66,7 +66,7 @@ export function Stand(props) {
                 </div>
             </div>
             <div>
-                    <Button className="w-100" onClick={cart === null? () => setCart([{product}]) : () => setCart([...cart,{product}]) } >+Add To Cart</Button>
+                    <Button className="w-100" onClick={cart === null? () => setCart([product]) : () => setCart([...cart,product]) } >+Add To Cart</Button>
             </div>
         </StandListSection>
 
