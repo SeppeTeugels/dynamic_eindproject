@@ -1,14 +1,15 @@
 export function Footer() {
 
     return <>
-        <span style={{
+        <footer style={{
             position: "fixed",
             bottom: "0",
-            left: "-17px",
+            left: "-15px",
             backgroundColor: "#060b26",
             textAlign: "center",
-            width: "100%",
+            width: "110%",
             color: "white"
-        }}>  © 2022 Copyright : Seppe Teugels</span>
+        }}> © 2022 Copyright : Seppe Teugels
+        </footer>
     </>
 }

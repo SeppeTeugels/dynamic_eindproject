@@ -42,6 +42,13 @@ function BuyPage(props) {
 
     return (<>
             <div style={{marginLeft: "22%"}}>
+                <h1 style={{
+                    color: "white",
+                    marginLeft: '-200px',
+                    padding: "10px",
+                    fontWeight: "bold",
+                    fontSize: "3rem"
+                }}>orders </h1>
                 <div id="tempnav" className="w-100 float-end" style={{padding: "20px"}}>
                     {cart ?
                         cart.map((item, index) => <ShowCart key={index} item={item} id={index}

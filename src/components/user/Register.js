@@ -83,7 +83,8 @@ function Register(props) {
                                 <Form.Label>Confirm Password</Form.Label>
                                 <Form.Control type="password" ref={confirmPasswordRef} required/>
                             </Form.Group>
-                            <Button disabled={loading} className="w-100" id="Login" type="submit">
+                            <Button disabled={loading} style={{backgroundColor: "#6B8BF5"}} className="w-100" id="Login"
+                                    type="submit">
                                 Sign up
                             </Button>
                         </Form>
@@ -92,7 +93,8 @@ function Register(props) {
                 </div>
             </Card>
             <div className="d-flex align-items-center justify-content-center">
-                aleady got an account? <Link to={"/login"}><Button style={{marginLeft: "20px"}}> log in </Button></Link>
+                aleady got an account? <Link to={"/login"}><Button
+                style={{marginLeft: "20px", backgroundColor: "#6B8BF5"}}> log in </Button></Link>
             </div>
         </>
     );

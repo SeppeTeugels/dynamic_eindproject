@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import {StandListSection} from "../components/stands/StandListSection";
-import {Button} from "react-bootstrap";
+import {StandListSection} from "../components/stands/StandtListSection.js";
 import {useUserContext} from "../contexts/userContext";
 import {collection, query} from "firebase/firestore";
 import {firestoreDB} from "../services/firebase";
@@ -29,9 +28,13 @@ function StandListPage() {
     const {user} = useUserContext();
     if (user === null) return navigate("/login")
     return (<>
-        <div>
-            <Link to="/dashboard"><Button> go to homepage </Button></Link>
-        </div>
+        <h1 style={{
+            color: "white",
+            marginLeft: '100px',
+            padding: "10px",
+            fontWeight: "bold",
+            fontSize: "3rem"
+        }}>Brands </h1>
         <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
             {user !== null && values ?
                 (user.age >= 18) ?
@@ -46,10 +49,9 @@ export default StandListPage;
 export function Stand(props) {
     const {stand} = props
     return (
-
         <StandListSection>
-            <Link to={`/productslistpage/${stand.name}`}><h1>{stand.name}</h1></Link>
-            <img src={`${stand.logo}`} alt="stand logo" style={{maxWidth: "500px"}}/>
+            <Link to={`/productslistpage/${stand.name}`}><img src={`${stand.logo}`} alt="stand logo"
+                                                              style={{maxWidth: "200px"}}/></Link>
         </StandListSection>
 
     )

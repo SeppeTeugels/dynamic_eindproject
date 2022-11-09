@@ -4,7 +4,6 @@ import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
-import StandPage from "./pages/StandPage";
 import StandListPage from "./pages/StandlistPage";
 import React, {useState} from "react";
 import "./services/firebase";
@@ -26,7 +25,7 @@ function App() {
                 <UserProvider>
                     <AuthProvider setLoggedIn={setLoggedIn}>
                         <Navbar loggedIn={loggedIn}/>
-                        <div style={{marginLeft: "70px"}}>
+                        <div style={{backgroundColor:"#757687", height:"100vh"}}>
                             <Routes>
                                 <Route path="/" element={<HomePage setLoggedIn={setLoggedIn}/>}/>
                                 <Route path="signup" element={<SignUpPage setLoggedIn={setLoggedIn}/>}/>
@@ -38,7 +37,6 @@ function App() {
                                                                setLoggedIn={setLoggedIn}/>}/>
                                 <Route path="standlistpage" element={<StandListPage/>}/>
                                 <Route path="productslistpage/:Id" element={<ProductsListPage/>}/>
-                                <Route path="stands/:Id" element={<StandPage/>}/>
                             </Routes>
                         </div>
                         <Footer/>

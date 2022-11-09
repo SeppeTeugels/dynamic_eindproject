@@ -68,7 +68,8 @@ function Login(props) {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" ref={passwordRef} required/>
                             </Form.Group>
-                            <Button disabled={loading} className="w-100" style={{marginTop: "10px"}} id="Login"
+                            <Button disabled={loading} className="w-100"
+                                    style={{marginTop: "10px", backgroundColor: "#6B8BF5"}} id="Login"
                                     type="submit">
                                 Log in
                             </Button>
@@ -78,7 +79,8 @@ function Login(props) {
                 </div>
             </Card>
             <div className="d-flex align-items-center justify-content-center">
-                no account? <Link to={"/signup"}><Button style={{marginLeft: "20px"}}> Sign-up </Button></Link>
+                no account? <Link to={"/signup"}><Button
+                style={{marginLeft: "20px", backgroundColor: "#6B8BF5"}}> Sign-up </Button></Link>
             </div>
         </>
     );

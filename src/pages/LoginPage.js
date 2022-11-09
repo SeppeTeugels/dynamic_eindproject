@@ -15,7 +15,7 @@ function LoginPage(props) {
                 </div>
             </Container>
             <div className="d-flex w-100 align-items-center justify-content-center" style={{marginTop: '10px'}}>
-                <Link to="/"><Button> go to homepage </Button></Link>
+                <Link to="/"><Button style={{backgroundColor: "#6B8BF5"}}> go to homepage </Button></Link>
             </div>
         </AuthProvider>
     )

@@ -12,12 +12,12 @@ export default function ProfilePage() {
     if (user === null) return navigate("/login")
     return <div>
         <Container className="d-flex align-items-center justify-content-center">
-            <div className="w-100" style={{maxWidth: '400px', marginTop: '20px'}}>
-                <Card style={{width: '18rem', borderRadius: "15px 15px 5px 5px"}}>
+            <div className="w-100" style={{display:"flex", maxWidth: '400px', marginTop: '20px', justifyContent:"center", textAlign:"center"}}>
+                <Card style={{width: '25rem', borderRadius: "15px 15px 5px 5px"}}>
                     <Card.Body>
                         <Card.Title>{user.userName}</Card.Title>
                     </Card.Body>
-                    <ListGroup className="list-group-flush">
+                    <ListGroup style={{fontSize:"large"}} className="list-group-flush">
                         <ListGroup.Item>{`username: ${user.userName}`}</ListGroup.Item>
                         <ListGroup.Item>{`age: ${user.age}`}</ListGroup.Item>
                         <ListGroup.Item>{`birthday: ${user.birthday}`}</ListGroup.Item>
@@ -27,8 +27,5 @@ export default function ProfilePage() {
             </div>
 
         </Container>
-        <div>
-            <Link to="/dashboard"><Button> go to homepage </Button></Link>
-        </div>
     </div>
 }
