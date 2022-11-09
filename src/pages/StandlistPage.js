@@ -50,8 +50,7 @@ export function Stand(props) {
     const {stand} = props
     return (
         <StandListSection>
-            <Link to={`/productslistpage/${stand.name}`}><img src={`${stand.logo}`} alt="stand logo"
-                                                              style={{maxWidth: "200px"}}/></Link>
+            <Link to={`/productslistpage/${stand.name}`}><img src={`${stand.logo}`} alt="stand logo" style={{maxWidth: "200px"}}/></Link>
         </StandListSection>
 
     )

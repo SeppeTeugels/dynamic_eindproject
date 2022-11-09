@@ -1,27 +1,18 @@
 import React, {useEffect} from 'react';
-import {Button, Col, Row} from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../contexts/AuthContext"
 import {useUserContext} from "../contexts/userContext";
 import Toast from "react-bootstrap/Toast";
 
 function DashboardPage(props) {
-    const {logout} = useAuth()
+
     const navigate = useNavigate();
     const {user} = useUserContext();
-    const {setLoggedIn, message, setMessage} = props;
+    const {message, setMessage} = props;
     useEffect(() => {
         if (user === null) return navigate("/login")
     })
-
-
-    async function handleLogout() {
-        try {
-            await logout();
-            setLoggedIn(false)
-        } catch {
-        }
-    }
 
     return (
         <div>
@@ -39,10 +30,41 @@ function DashboardPage(props) {
                         </Col>
                     </Row> : ""
             }
-            <div id="tempnav" className="w-100 float-end" style={{paddingLeft: "80%"}}>
-                <Button onClick={handleLogout}> Log out </Button>
-            </div>
-            <Link to="/standlistpage"><Button>Listing of all the stands</Button></Link>
+            <h1 style={{
+                color: "white",
+                marginLeft: '100px',
+                padding: "10px",
+                fontWeight: "bold",
+                fontSize: "3rem"
+            }}> Dashboard </h1>
+
+            <Container className='p-1' style={{backgroundColor: "#757687", textAlign: "center", marginBottom: "21%"}}>
+
+                <div style={{
+                    marginBottom: "20px",
+                    display: "flex",
+                    justifyContent: "center",
+                }}>
+                </div>
+                <section style={{marginLeft: "25px", backgroundColor: "var(--dark-color)"}} id="feature">
+                    <div style={{display: "flex", direction: "row", justifyContent: "center"}}>
+                        <div style={{backgroundColor: "#060b26", borderRadius: "5px", marginRight: "20px"}}
+                             className="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
+                            <h2 className="mb-3 text-white">Who is at the Convention?</h2>
+                            <h6 className="mb-4 text-white">Check now!</h6>
+                            <Link to={"/standlistpage"}><Button
+                                style={{marginBottom: "20px", backgroundColor: "#6B8BF5"}}> stands </Button></Link>
+                        </div>
+                        <div style={{backgroundColor: "#060b26", borderRadius: "5px"}}
+                             className="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
+                            <h2 className="mb-3 text-white">You want to see what products are for sale?</h2>
+                            <h6 className="mb-4 text-white">Go to products and see!</h6>
+                            <Link to={"/productslistpage/all"}><Button
+                                style={{marginBottom: "20px", backgroundColor: "#6B8BF5"}}> products</Button></Link>
+                        </div>
+                    </div>
+                </section>
+            </Container>
         </div>
     )
 }

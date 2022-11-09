@@ -7,10 +7,13 @@ import './Navbar.css';
 import {IconContext} from 'react-icons';
 import {useUserContext} from "../../contexts/userContext";
 import {useCartContext} from "../../contexts/ShoppingCartContext";
+import {Button} from "react-bootstrap";
+import {useAuth} from "../../contexts/AuthContext";
 
 function Navbar(props) {
     const [sidebar, setSidebar] = useState(false);
-    const {loggedIn} = props
+    const {loggedIn, setLoggedIn} = props
+    const {logout} = useAuth()
     const {user} = useUserContext();
     const {cart} = useCartContext();
     const showSidebar = () => setSidebar(!sidebar);
@@ -25,6 +28,14 @@ function Navbar(props) {
         greeting = 'good afternoon'
     } else {
         greeting = 'good evening'
+    }
+
+    async function handleLogout() {
+        try {
+            await logout();
+            setLoggedIn(false)
+        } catch {
+        }
     }
 
     return (
@@ -103,6 +114,14 @@ function Navbar(props) {
                                 </li>
                             );
                         }) : ""}
+                        {loggedIn ? <li style={{marginLeft:"-13px"}} className="nav-text">
+                            <a>
+                                <Link>
+                                    <FaIcons.FaSignOutAlt/>
+                                    <span style={{fontSize: "18px", color: "white"}} onClick={handleLogout}> Log out </span>
+                                </Link>
+                            </a>
+                        </li> : ""}
                     </ul>
                 </nav>
             </IconContext.Provider>
