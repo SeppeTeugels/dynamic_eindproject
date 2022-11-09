@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {Link, useNavigate} from "react-router-dom";
-import {useAuth} from "../contexts/AuthContext"
 import {useUserContext} from "../contexts/userContext";
 import Toast from "react-bootstrap/Toast";
 

@@ -7,7 +7,6 @@ import './Navbar.css';
 import {IconContext} from 'react-icons';
 import {useUserContext} from "../../contexts/userContext";
 import {useCartContext} from "../../contexts/ShoppingCartContext";
-import {Button} from "react-bootstrap";
 import {useAuth} from "../../contexts/AuthContext";
 
 function Navbar(props) {
@@ -114,13 +113,11 @@ function Navbar(props) {
                                 </li>
                             );
                         }) : ""}
-                        {loggedIn ? <li style={{marginLeft:"-13px"}} className="nav-text">
-                            <a>
-                                <Link>
-                                    <FaIcons.FaSignOutAlt/>
-                                    <span style={{fontSize: "18px", color: "white"}} onClick={handleLogout}> Log out </span>
-                                </Link>
-                            </a>
+                        {loggedIn ? <li style={{marginLeft: "-13px"}} className="nav-text">
+                            <Link>
+                                <FaIcons.FaSignOutAlt/>
+                                <span style={{fontSize: "18px", color: "white"}} onClick={handleLogout}> Log out </span>
+                            </Link>
                         </li> : ""}
                     </ul>
                 </nav>

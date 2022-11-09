@@ -1,9 +1,9 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {useUserContext} from "../contexts/userContext";
-import {Button, Container} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 export default function ProfilePage() {
 

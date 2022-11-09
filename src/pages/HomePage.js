@@ -1,6 +1,5 @@
 import React from 'react';
-import {MDBBtn} from 'mdb-react-ui-kit';
-import {Button, Container, Row} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {useUserContext} from "../contexts/userContext";
 

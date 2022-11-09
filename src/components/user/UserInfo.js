@@ -1,6 +1,5 @@
 import {addDoc, collection} from "firebase/firestore";
 import {firestoreDB} from "../../services/firebase";
-import {Card, Col} from "react-bootstrap";
 
 const personConverter = {
     toFirestore: function (dataInApp) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useParams, useNavigate} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import {ProductListSection} from "../components/stands/ProductListSection";
 import {Button} from "react-bootstrap";
 import {collection, query} from "firebase/firestore";
