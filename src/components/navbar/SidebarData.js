@@ -19,14 +19,14 @@ export const SidebarData = [
         loggedin: true
     },
     {
-        title: 'Standslist',
+        title: 'Stands',
         path: '/standlistpage',
         icon: <FaIcons.FaWarehouse/>,
         cName: 'nav-text',
         loggedin: true
     },
     {
-        title: 'Produclist',
+        title: 'Products',
         path: '/productslistpage/all',
         icon: <IoIcons.IoMdList/>,
         cName: 'nav-text',

@@ -3,6 +3,7 @@ import {getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, sign
 import app from "../services/firebase";
 import {useUserContext} from "./userContext";
 import {useNavigate} from "react-router-dom";
+import {useCartContext} from "./ShoppingCartContext";
 
 const AuthContext = React.createContext();
 
@@ -19,6 +20,7 @@ export function AuthProvider({children}){
     const [loading] = useState();
     const {clearUser} = useUserContext()
     const navigate = useNavigate();
+    const {clearCart} = useCartContext()
 
 
     function signup(email, password) {
@@ -50,6 +52,7 @@ export function AuthProvider({children}){
     function logout(){
         signOut(auth).then(() => {
             clearUser()
+            clearCart()
             navigate('/')
         }).catch((error) => {
             console.log(error)

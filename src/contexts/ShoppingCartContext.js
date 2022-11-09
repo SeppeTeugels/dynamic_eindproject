@@ -9,7 +9,7 @@ export function ShoppingCartProvider(props) {
     const clearCart = useCallback(() => setCart(null), []);
 
     const api = useMemo(() =>
-        ({cart, setCart, clearCart}), [{cart, setCart, clearCart}]);
+        ({cart, setCart, clearCart }), [{cart, setCart, clearCart}]);
 
     return (
         <ShoppingCartContext.Provider value={api}>

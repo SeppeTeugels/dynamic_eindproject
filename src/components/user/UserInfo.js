@@ -27,17 +27,3 @@ export async function addingUser(user) {
     }
 }
 
-export function ShowUser(props) {
-    const {user} = props
-    if (!user) return;
-    console.log(user)
-    return <Col xs={4} sm={3} md={2} xxl={2}
-                className={"text-center"}>
-        <Card className="m-2 p-2 shadow-sm">
-            <h6>{user.userName}</h6>
-            <p>{user.age}</p>
-            <p>{user.email}</p>
-        </Card>
-    </Col>
-}
-

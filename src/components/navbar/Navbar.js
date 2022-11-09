@@ -13,12 +13,13 @@ function Navbar(props) {
     const {loggedIn} = props
     const {user} = useUserContext();
     const {cart} = useCartContext();
-    console.log(cart);
     const showSidebar = () => setSidebar(!sidebar);
     const today = new Date()
     const curHr = today.getHours()
     let greeting = ""
-    if (curHr < 12) {
+    if (curHr > 0 && curHr < 7) {
+        greeting = 'good night'
+    } else if (curHr < 12) {
         greeting = 'good morning'
     } else if (curHr < 18) {
         greeting = 'good afternoon'
@@ -35,7 +36,7 @@ function Navbar(props) {
                             <FaIcons.FaBars onClick={showSidebar}/>
                         </Link>
                         {(cart && cart.length > 0)?
-                            <Link to='#' style={{display: "flex", width: "100%"}} onClick={showSidebar}>
+                            <Link to='/buypage' style={{display: "flex", width: "100%"}}>
                                 <FaIcons.FaCartPlus style={{fontSize: "30px", marginTop: "10px", marginLeft: "10px"}}>
                                 </FaIcons.FaCartPlus>
                                 <div
@@ -67,7 +68,7 @@ function Navbar(props) {
                             color: 'white',
                             paddingLeft: "20px"
                         }}>{user && user.userName ? `${greeting}, ${user.userName}` : ""}</h5>
-                        {loggedIn ? [...SidebarData].filter(s => s.loggedin === true && s.title !== "orders").map((item, index) => {
+                        {loggedIn? [...SidebarData].filter(s => s.loggedin === true && s.title !== "orders").map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
                                     <Link to={item.path}>

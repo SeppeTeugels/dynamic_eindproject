@@ -1,6 +1,6 @@
 import {Alert, Button, Card, Form} from "react-bootstrap";
-import React, {useRef, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import {Link} from "react-router-dom";
 import {useAuth} from "../../contexts/AuthContext";
 import {collection, query} from "firebase/firestore";
 import {firestoreDB} from "../../services/firebase";
@@ -31,7 +31,6 @@ function Login(props) {
     const {login} = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate();
     const [values] = useCollectionData(queryRef);
     const {setUser} = useUserContext();
     const {setLoggedIn} = props
@@ -50,11 +49,11 @@ function Login(props) {
         }
         setError('Failed to log in')
         setLoading(false)
-
     }
 
     return (<>
-            <Card onLoad={() => setLoggedIn(false)}>
+            {useEffect(() => setLoggedIn(false))}
+            <Card>
                 <h1>Log in</h1>
                 {error && <Alert variant={"danger"}>{error}</Alert>}
                 <div className={"mx-3"}>
