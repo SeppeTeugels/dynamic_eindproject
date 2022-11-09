@@ -15,7 +15,7 @@ function BuyPage(props) {
         if (user === null) return navigate("/login")
     })
 
-    const price = cart && cart.length !== 0? cart.map(p => p.price).reduce((a, b) => a + b).toFixed(2): setCart(null)
+    const price = cart && cart.length !== 0 ? cart.map(p => p.price).reduce((a, b) => a + b).toFixed(2) : setCart(null)
 
     if (!cart) return <>
         <div style={{marginLeft: "22%"}}>

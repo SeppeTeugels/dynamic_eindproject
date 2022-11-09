@@ -8,8 +8,8 @@ import {Link, useNavigate} from "react-router-dom";
 export default function ProfilePage() {
 
     const navigate = useNavigate();
-    const{user} = useUserContext();
-    if (user === null)return navigate("/login")
+    const {user} = useUserContext();
+    if (user === null) return navigate("/login")
     return <div>
         <Container className="d-flex align-items-center justify-content-center">
             <div className="w-100" style={{maxWidth: '400px', marginTop: '20px'}}>

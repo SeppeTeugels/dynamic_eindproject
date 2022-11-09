@@ -35,7 +35,7 @@ function Navbar(props) {
                         <Link to='#' className={'menu-bars'}>
                             <FaIcons.FaBars onClick={showSidebar}/>
                         </Link>
-                        {(cart && cart.length > 0)?
+                        {(cart && cart.length > 0) ?
                             <Link to='/buypage' style={{display: "flex", width: "100%"}}>
                                 <FaIcons.FaCartPlus style={{fontSize: "30px", marginTop: "10px", marginLeft: "10px"}}>
                                 </FaIcons.FaCartPlus>
@@ -53,7 +53,7 @@ function Navbar(props) {
                                 >
                                     {cart ? cart.length : 0}
                                 </div>
-                            </Link>:""}
+                            </Link> : ""}
 
                     </div>
                 </div>
@@ -68,7 +68,7 @@ function Navbar(props) {
                             color: 'white',
                             paddingLeft: "20px"
                         }}>{user && user.userName ? `${greeting}, ${user.userName}` : ""}</h5>
-                        {loggedIn? [...SidebarData].filter(s => s.loggedin === true && s.title !== "orders").map((item, index) => {
+                        {loggedIn ? [...SidebarData].filter(s => s.loggedin === true && s.title !== "orders").map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
                                     <Link to={item.path}>

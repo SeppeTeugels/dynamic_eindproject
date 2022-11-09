@@ -20,9 +20,8 @@ import {Footer} from "./components/footer/Footer";
 
 function App() {
     const [loggedIn, setLoggedIn] = useLocalStorage("loggedIn", false);
-    const [message, setMessage] = useLocalStorage("message",false);
-    return (
-        <Router>
+    const [message, setMessage] = useLocalStorage("message", false);
+    return (<Router>
             <ShoppingCartProvider>
                 <UserProvider>
                     <AuthProvider setLoggedIn={setLoggedIn}>
@@ -33,8 +32,10 @@ function App() {
                                 <Route path="signup" element={<SignUpPage setLoggedIn={setLoggedIn}/>}/>
                                 <Route path="login" element={<LoginPage setLoggedIn={setLoggedIn}/>}/>
                                 <Route path="profile" element={<ProfilePage/>}/>
-                                <Route path="buyPage" element={<BuyPage  message={message} setMessage={setMessage}  />}/>
-                                <Route path="dashboard" element={<DashboardPage message={message} setMessage={setMessage}  setLoggedIn={setLoggedIn}/>}/>
+                                <Route path="buyPage" element={<BuyPage message={message} setMessage={setMessage}/>}/>
+                                <Route path="dashboard"
+                                       element={<DashboardPage message={message} setMessage={setMessage}
+                                                               setLoggedIn={setLoggedIn}/>}/>
                                 <Route path="standlistpage" element={<StandListPage/>}/>
                                 <Route path="productslistpage/:Id" element={<ProductsListPage/>}/>
                                 <Route path="stands/:Id" element={<StandPage/>}/>
@@ -44,8 +45,7 @@ function App() {
                     </AuthProvider>
                 </UserProvider>
             </ShoppingCartProvider>
-        </Router>
-    );
+        </Router>);
 }
 
 export default App;
@@ -73,8 +73,7 @@ function useLocalStorage(key, initialValue) {
     const setValue = (value) => {
         try {
             // Allow value to be a function so we have same API as useState
-            const valueToStore =
-                value instanceof Function ? value(storedValue) : value;
+            const valueToStore = value instanceof Function ? value(storedValue) : value;
             // Save state
             setStoredValue(valueToStore);
             // Save to local storage

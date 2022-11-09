@@ -34,6 +34,7 @@ function Login(props) {
     const [values] = useCollectionData(queryRef);
     const {setUser} = useUserContext();
     const {setLoggedIn} = props
+
     async function handleSubmit(e) {
         e.preventDefault()
 
@@ -67,7 +68,8 @@ function Login(props) {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" ref={passwordRef} required/>
                             </Form.Group>
-                            <Button disabled={loading} className="w-100" style={{marginTop: "10px"}} id="Login" type="submit">
+                            <Button disabled={loading} className="w-100" style={{marginTop: "10px"}} id="Login"
+                                    type="submit">
                                 Log in
                             </Button>
                         </Form>

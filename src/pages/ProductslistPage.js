@@ -28,8 +28,8 @@ function ProductsListPage() {
     const params = useParams();
 
     const navigate = useNavigate();
-    const{user} = useUserContext();
-    if (user === null)return navigate("/login")
+    const {user} = useUserContext();
+    if (user === null) return navigate("/login")
 
 
     return (<>
@@ -37,12 +37,13 @@ function ProductsListPage() {
             <Link to="/dashboard"><Button> go to homepage </Button></Link>
         </div>
         <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
-            {params.Id === "all" && values? user.age >= 18? values.map((s, i) =>
-                <Product key={i} product={s}/>): values.filter( v => !v.age).map((s, i) =>
-                <Product key={i} product={s}/>):""}
+            {params.Id === "all" && values ? user.age >= 18 ? values.map((s, i) =>
+                <Product key={i} product={s}/>) : values.filter(v => !v.age).map((s, i) =>
+                <Product key={i} product={s}/>) : ""}
         </div>
         <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
-            {params && values ? values.filter(s => s.standName === params.Id).map((s, i) => <Product key={i} product={s}/>) : ""}
+            {params && values ? values.filter(s => s.standName === params.Id).map((s, i) => <Product key={i}
+                                                                                                     product={s}/>) : ""}
         </div>
     </>)
 }
@@ -51,7 +52,7 @@ export default ProductsListPage;
 
 export function Product(props) {
     const {product} = props
-    const {cart ,setCart} = useCartContext();
+    const {cart, setCart} = useCartContext();
     return (
         <StandListSection>
             <img src={`images/${product.image}`} alt="stand logo" style={{maxWidth: "500px"}}/>
@@ -70,7 +71,9 @@ export function Product(props) {
                 </div>
             </div>
             <div>
-                    <Button className="w-100" onClick={cart === null? () => setCart([product]) : () => setCart([...cart,product]) } >+Add To Cart</Button>
+                <Button className="w-100"
+                        onClick={cart === null ? () => setCart([product]) : () => setCart([...cart, product])}>+Add To
+                    Cart</Button>
             </div>
         </StandListSection>
 

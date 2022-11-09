@@ -41,7 +41,7 @@ function Register(props) {
             console.log(getAge(ageRef))
             const user = {
                 userName: usernameRef.current.value,
-                birthday:ageRef.current.value,
+                birthday: ageRef.current.value,
                 age: Number(getAge(ageRef)),
                 email: emailRef.current.value,
             };

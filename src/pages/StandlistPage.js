@@ -26,17 +26,17 @@ function StandListPage() {
     const [values] = useCollectionData(queryRef);
 
     const navigate = useNavigate();
-    const{user} = useUserContext();
-    if (user === null)return navigate("/login")
+    const {user} = useUserContext();
+    if (user === null) return navigate("/login")
     return (<>
         <div>
             <Link to="/dashboard"><Button> go to homepage </Button></Link>
         </div>
         <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
-            {user !== null && values?
-            (user.age >= 18) ?
-                values.map((s, i) => <Stand key={i} stand={s}/>)
-                : [...values].filter(s => !s.age).map((s, i) => <Stand key={i} stand={s}/>) : ""}
+            {user !== null && values ?
+                (user.age >= 18) ?
+                    values.map((s, i) => <Stand key={i} stand={s}/>)
+                    : [...values].filter(s => !s.age).map((s, i) => <Stand key={i} stand={s}/>) : ""}
         </div>
     </>)
 }

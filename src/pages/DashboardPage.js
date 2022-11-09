@@ -8,9 +8,11 @@ import Toast from "react-bootstrap/Toast";
 function DashboardPage(props) {
     const {logout} = useAuth()
     const navigate = useNavigate();
-    const{user} = useUserContext();
+    const {user} = useUserContext();
     const {setLoggedIn, message, setMessage} = props;
-    useEffect(() => {if (user === null)return navigate("/login")})
+    useEffect(() => {
+        if (user === null) return navigate("/login")
+    })
 
 
     async function handleLogout() {
@@ -20,10 +22,11 @@ function DashboardPage(props) {
         } catch {
         }
     }
+
     return (
         <div>
             {
-                message?
+                message ?
                     <Row style={{position: "absolute", right: "10px"}}>
                         <Col>
                             <Toast onClose={() => setMessage(false)} show={message} delay={5000} autohide>
@@ -34,7 +37,7 @@ function DashboardPage(props) {
                                 <Toast.Body variant={'Success'}>everything in cart is bought.</Toast.Body>
                             </Toast>
                         </Col>
-                    </Row>:""
+                    </Row> : ""
             }
             <div id="tempnav" className="w-100 float-end" style={{paddingLeft: "80%"}}>
                 <Button onClick={handleLogout}> Log out </Button>

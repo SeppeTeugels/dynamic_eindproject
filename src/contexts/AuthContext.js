@@ -1,5 +1,5 @@
 import React, {useContext, useMemo, useState} from 'react'
-import {getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth"
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth"
 import app from "../services/firebase";
 import {useUserContext} from "./userContext";
 import {useNavigate} from "react-router-dom";
@@ -15,7 +15,7 @@ export function useAuth() {
 }
 
 
-export function AuthProvider({children}){
+export function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState();
     const [loading] = useState();
     const {clearUser} = useUserContext()
@@ -39,7 +39,7 @@ export function AuthProvider({children}){
             .then((userCredential) => {
                 const user = userCredential.user;
                 setCurrentUser(user);
-                if(user !== null) {
+                if (user !== null) {
                     navigate('/dashboard')
                 }
             })
@@ -49,7 +49,7 @@ export function AuthProvider({children}){
             });
     }
 
-    function logout(){
+    function logout() {
         signOut(auth).then(() => {
             clearUser()
             clearCart()
@@ -59,9 +59,9 @@ export function AuthProvider({children}){
         });
     }
 
-    const value = useMemo( () => ({currentUser, signup, login, logout}),[]);
+    const value = useMemo(() => ({currentUser, signup, login, logout}), []);
 
-    return(
+    return (
         <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
